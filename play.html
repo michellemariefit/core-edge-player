@@ -85,6 +85,9 @@ h1{margin:0;font:800 clamp(24px,7vw,32px)/1.1 var(--display);display:flex;gap:10
 .intro ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
 .intro .opt{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .intro .opt input{width:22px;height:22px;accent-color:var(--brand)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:var(--card);color:var(--ink);padding:10px 18px;font:800 16px/1 var(--display);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
 .picker{display:flex;flex-direction:column;gap:14px;padding-bottom:20px}
 .picker h2{margin:0;font:800 30px/1.1 var(--display)}
 .picker .grp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px}
@@ -110,8 +113,12 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let DATA=null, W=null, G=null, steps=[], at=-1, rest=null, timer=null, hold=null, openVid=false;
 const key=()=>`core:${W.id}`;
+// Rounds: start at 2, move up to 3 when stronger. Saved per phone. Plank: starts at the low end of the hold and climbs 5s per finished workout.
+const rounds=()=>Math.min(Math.max(store.get('core:rounds',2),2),3);
+function plankSeconds(e){const m=(e.note||'').match(/(\d+)-(\d+)\s*second/i);if(!m)return 0;return Math.min(Math.max(store.get('core:plank',+m[1]),+m[1]),+m[2])}
 
 function holdSeconds(e,w){
+  const p=plankSeconds(e); if(p) return p;
   const m=(e.note||'').match(/(\d+)(?:-(\d+))?[\s-]*(?:second|sec\b)/i)||(w.how||'').match(/hold each rep for (\d+)\s*second/i);
   return m?+(m[2]||m[1]):0;
 }
@@ -162,6 +169,8 @@ function next(){
 function back(){stopTimer();openVid=false;if(at>0){at--;if(steps[at].kind==='rest')at--;if(steps[at]&&steps[at].kind==='ex')tickSet(steps[at].e,steps[at].round,false)}render()}
 function finish(){
   const s=store.get(key(),{ticks:{}});s.finished=Date.now();store.set(key(),s);
+  const pl=W.blocks.flatMap(b=>b.exercises).find(e=>plankSeconds(e));
+  if(pl){const m=pl.note.match(/(\d+)-(\d+)/);store.set('core:plank',Math.min(plankSeconds(pl)+5,+m[2]))}
   const log=store.get('core:log',[]);log.push({t:Date.now(),id:W.id,name:W.name});store.set('core:log',log.slice(-200));
   at=steps.length;render();
 }
@@ -180,6 +189,8 @@ function render(){
       <p>${`${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.`}</p>
       ${defaults.length?`<label class="opt"><input type="checkbox" id="swapOpt" ${defaults.every(e=>sw[e.code])?'checked':''}><span><b>Add stability</b><br><small style="color:var(--muted)">Swaps ${defaults.map(e=>e.code).join(' and ')} for ${defaults.map(e=>e.swap.name).join(' and ')}</small></span></label>`:''}
       ${G.video?(openVid===G.video&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(G.video)}?rel=0&modestbranding=1&playsinline=1&autoplay=1" title="${esc(G.name)} explained" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><button class="change" data-embed="${esc(G.video)}" style="background:none;border:0;text-align:left;padding:0;cursor:pointer">✕ Close video</button>`:EMBED_OK?`<button class="change" data-embed="${esc(G.video)}" style="background:none;border:0;text-align:left;padding:0;cursor:pointer">▶ Watch Michelle explain this</button>`:`<a class="change" href="https://www.youtube.com/watch?v=${esc(G.video)}" target="_blank" rel="noopener">▶ Watch Michelle explain this</a>`):''}
+      <div class="opt" style="justify-content:space-between"><span><b>Rounds</b><br><small style="color:var(--muted)">Start with 2. When it feels easy, go to 3.</small></span><span class="seg"><button data-rounds="2" aria-pressed="${rounds()===2}">2</button><button data-rounds="3" aria-pressed="${rounds()===3}">3</button></span></div>
+      ${W.blocks.flatMap(b=>b.exercises).some(e=>plankSeconds(e))?`<p style="font-size:14px">Plank today: <b>${plankSeconds(W.blocks.flatMap(b=>b.exercises).find(e=>plankSeconds(e)))} seconds</b>. It goes up 5 seconds every time you finish, up to 60.</p>`:''}
       <button class="go" id="start">Start</button><a class="change" href="play.html">Pick a different workout</a></div>`;
     return;
   }
@@ -188,7 +199,7 @@ function render(){
     const n=store.get('core:log',[]).filter(x=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return x.t>=d.getTime()}).length;
     const nxt=(()=>{const all=G.workouts.map(w=>w.id);const i=all.indexOf(W.id);const id=all[(i+1)%all.length];return [`Nice work. Next time it is Workout ${id.split('-')[1]}. Stretch tonight if you can.`,`play.html#${id}`,`Next: Workout ${id.split('-')[1]}`]})();
     const NEXT=nxt;
-    m.innerHTML=`<div class="donecard"><h2>${esc(W.name)} done</h2><p>${NEXT[0]}</p><p><b>${n}</b> workout${n===1?'':'s'} this week.</p>
+    m.innerHTML=`<div class="donecard"><h2>${esc(W.name)} done</h2><p>${NEXT[0]}</p><p><b>${n}</b> core workout${n===1?'':'s'} this week.</p>
       <a class="go" style="display:block;text-decoration:none;text-align:center" href="${NEXT[1]}">${NEXT[2]}</a><a class="go" style="display:block;text-decoration:none;text-align:center;background:var(--card);color:var(--ink);border:1px solid var(--line)" href="start.html">Home</a></div>`;
     return;
   }
@@ -230,6 +241,7 @@ document.addEventListener('click',e=>{
   if(b.id==='plus'&&rest){rest.ends+=15000;rest.total+=15;return}
   if(b.id==='startHold'){const s=steps[at];startTimer('hold',holdSeconds(shown(s.e),W));return}
   if(b.id==='stopHold'){stopTimer();render();return}
+  if(b.dataset.rounds){store.set('core:rounds',+b.dataset.rounds);W.sets=rounds();buildSteps();render();return}
   if(b.dataset.embed){openVid=openVid===b.dataset.embed?false:b.dataset.embed;render();return}
 });
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(rest||hold))render()});
@@ -237,6 +249,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(rest||ho
 fetch('data/core.json').then(r=>r.json()).then(d=>{
   DATA=d;const id=decodeURIComponent(location.hash.replace(/^#/,'')).toLowerCase();
   [W,G]=workoutOf(id);if(!W){renderPicker(id);return}
+  W.sets=rounds();
   buildSteps();render();
 });
 

@@ -24,8 +24,8 @@ YT = re.compile(r"youtu\.be/([A-Za-z0-9_-]{11})")
 
 # Michelle's lesson video, unlisted on YouTube, shown as "Watch Michelle explain this". Empty until she sends it.
 GROUP_VIDEO = ""
-# Rounds per workout. The PDF says 3 exercises, 15-20 reps each; rounds are Michelle's call.
-ROUNDS = 2
+# Rounds per workout: start at 2, move to 3 when stronger (Michelle). The player keeps the choice per phone.
+ROUNDS_MIN, ROUNDS_MAX = 2, 3
 REST_SECONDS = 30
 
 GROUP = {
@@ -116,7 +116,7 @@ def main():
         group["workouts"].append({
             "id": wid, "name": f"Core Workout {w['n']}", "group": "core",
             "how": how, "when": "", "tip": "",
-            "sets": ROUNDS, "setsLabel": f"{ROUNDS} rounds", "reps": "15-20",
+            "sets": ROUNDS_MAX, "setsMin": ROUNDS_MIN, "setsLabel": "2 or 3 rounds", "reps": "15-20",
             "restSeconds": REST_SECONDS, "restLabel": f"{REST_SECONDS}s",
             "circuit": True, "blocks": [{"label": "Circuit", "exercises": exs}]})
         print(wid, "·", " / ".join(f"{x['name']} ({x['video']})" for x in exs))

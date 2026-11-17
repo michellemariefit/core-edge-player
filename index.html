@@ -50,6 +50,9 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 .pick.nums button{flex:none}
 h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
 .toolrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:var(--card);color:var(--ink);padding:9px 14px;font:700 13px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
 .toolrow a.play{background:var(--accent);color:#fff;border-color:var(--accent)}
 .toolrow a,.toolrow button.link{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none;
   border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;display:inline-flex;gap:6px;align-items:center}
@@ -163,6 +166,8 @@ const store={
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 };
 const key=()=>`core:${state.workout}`;
+const rounds=()=>Math.min(Math.max(store.get('core:rounds',2),2),3);
+function plankSeconds(e){const m=(e.note||'').match(/(\d+)-(\d+)\s*second/i);if(!m)return 0;return Math.min(Math.max(store.get('core:plank',+m[1]),+m[1]),+m[2])}
 function weekStart(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.getTime()}
 function weekLog(){return store.get('core:log',[]).filter(t=>t.t>=weekStart())}
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
@@ -209,6 +214,7 @@ function howtoHTML(w){
   return `<div class="howto"><h2>How this works</h2><ol>${steps}</ol><p style="margin:0;font-size:15px;color:var(--muted)">Rather be walked through it? Tap <b>Play it step by step</b> just below. Need paper? Tap <b>Print</b>.</p><button class="got" data-howto="hide">Got it</button></div>`;
 }
 function holdSeconds(e,w){
+  const p=plankSeconds(e); if(p) return p;
   const m=(e.note||'').match(/(\d+)(?:-(\d+))?[\s-]*(?:second|sec\b)/i)||(w.how||'').match(/hold each rep for (\d+)\s*second/i);
   return m?+(m[2]||m[1]):0;
 }
@@ -222,7 +228,7 @@ function restHTML(){
 async function render(){
   let d;
   try{d=await load()}catch(e){$('#workout').innerHTML=`<div class="err">The workouts didn't load. Check your connection and refresh the page.</div>`;return}
-  const g=groupOf(state.group), w=workoutOf(state.workout);
+  const g=groupOf(state.group), w=workoutOf(state.workout); w.sets=rounds();
   $('#eyebrow').textContent=`The Core Edge`;
   $('#title').textContent=w.name;
   $('#groupPick').innerHTML=state.lock==='none'?d.groups.map(x=>`<button aria-pressed="${x.id===g.id}" data-group="${x.id}">${esc(x.name)}</button>`).join(''):'';
@@ -236,7 +242,7 @@ async function render(){
   $('#intro').innerHTML=`<div class="when"><b>When to do this</b>${esc(g.when||'')}</div>${gv}<div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
     <p><b>How:</b> ${esc(w.how)}</p>${w.when?`<p><b>When:</b> ${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours:</b> ${esc(w.tip)}</p>`:''}
     ${gear.length?`<p class="gear"><b>You need:</b> ${esc(gear.join(', '))}</p>`:''}
-    <div class="toolrow">${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="play.html#${esc(w.id)}" class="play">▶ Play it step by step</a><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
+    <div class="toolrow"><span class="seg" title="Rounds"><button data-rounds="2" aria-pressed="${rounds()===2}">2 rounds</button><button data-rounds="3" aria-pressed="${rounds()===3}">3 rounds</button></span>${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="play.html#${esc(w.id)}" class="play">▶ Play it step by step</a><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
   $('#howto').innerHTML=howtoHTML(w);
   $('#nudge').innerHTML=state.lock==='none'?nudgeHTML(d):'';
 
@@ -314,7 +320,7 @@ document.addEventListener('click',e=>{
   if(b.dataset.group){const g=groupOf(b.dataset.group);state.group=g.id;state.workout=g.workouts[0].id;stopRest();render();return}
   if(b.dataset.workout){state.workout=b.dataset.workout;stopRest();render();return}
   if(b.dataset.tick){
-    const w=workoutOf(state.workout);
+    const w=workoutOf(state.workout); w.sets=rounds();
     const s=store.get(key(),{ticks:{}});const arr=s.ticks[b.dataset.tick]||[];const i=+b.dataset.i;
     arr[i]=!arr[i];s.ticks[b.dataset.tick]=arr;store.set(key(),s);
     if(arr[i]){
@@ -337,6 +343,7 @@ document.addEventListener('click',e=>{
     if(rest){rest.ends+=15000;rest.total+=15;rest.left+=15;tick()}return;
   }
   if(b.dataset.howto){store.set('core:howto',b.dataset.howto==='hide');render();return}
+  if(b.dataset.rounds){store.set('core:rounds',+b.dataset.rounds);render();return}
   if(b.dataset.embed){
     const c=b.dataset.code;
     if(state.openVid[c]===b.dataset.embed)delete state.openVid[c];else{state.openVid[c]=b.dataset.embed;state.justOpened=c}
