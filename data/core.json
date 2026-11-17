@@ -31,21 +31,27 @@
          "name": "Russian Twists",
          "video": "RgBLeOhfUQQ",
          "note": "",
-         "photo": "images/RgBLeOhfUQQ-pdf.webp"
+         "photo": "images/RgBLeOhfUQQ-pdf.webp",
+         "startPhoto": "images/RgBLeOhfUQQ-start.webp",
+         "endPhoto": "images/RgBLeOhfUQQ-end.webp"
         },
         {
          "code": "2",
          "name": "Plank",
          "video": "GlOaJ7sRTQ8",
          "note": "Hold 30-60 seconds",
-         "photo": "images/GlOaJ7sRTQ8-pdf.webp"
+         "photo": "images/GlOaJ7sRTQ8-pdf.webp",
+         "startPhoto": "images/GlOaJ7sRTQ8-start.webp",
+         "endPhoto": "images/GlOaJ7sRTQ8-end.webp"
         },
         {
          "code": "3",
          "name": "Leg Raises",
          "video": "zidYipkg-Ac",
          "note": "",
-         "photo": "images/zidYipkg-Ac-pdf.webp"
+         "photo": "images/zidYipkg-Ac-pdf.webp",
+         "startPhoto": "images/zidYipkg-Ac-start.webp",
+         "endPhoto": "images/zidYipkg-Ac-end.webp"
         }
        ]
       }
@@ -73,21 +79,27 @@
          "name": "Stability Ball Drops",
          "video": "a9aFOBr8AvM",
          "note": "",
-         "photo": "images/a9aFOBr8AvM-pdf.webp"
+         "photo": "images/a9aFOBr8AvM-pdf.webp",
+         "startPhoto": "images/a9aFOBr8AvM-start.webp",
+         "endPhoto": "images/a9aFOBr8AvM-end.webp"
         },
         {
          "code": "2",
          "name": "Stability Ball Rollouts",
          "video": "gZ4P8n_KeNc",
          "note": "",
-         "photo": "images/gZ4P8n_KeNc-pdf.webp"
+         "photo": "images/gZ4P8n_KeNc-pdf.webp",
+         "startPhoto": "images/gZ4P8n_KeNc-start.webp",
+         "endPhoto": "images/gZ4P8n_KeNc-end.webp"
         },
         {
          "code": "3",
          "name": "Lying Woodchops",
          "video": "mXvaNbnp9MI",
          "note": "",
-         "photo": "images/mXvaNbnp9MI-pdf.webp"
+         "photo": "images/mXvaNbnp9MI-pdf.webp",
+         "startPhoto": "images/mXvaNbnp9MI-start.webp",
+         "endPhoto": "images/mXvaNbnp9MI-end.webp"
         }
        ]
       }
@@ -115,21 +127,27 @@
          "name": "Oblique Stability Ball Rollouts",
          "video": "VGTkZKyjEN0",
          "note": "",
-         "photo": "images/VGTkZKyjEN0-pdf.webp"
+         "photo": "images/VGTkZKyjEN0-pdf.webp",
+         "startPhoto": "images/VGTkZKyjEN0-start.webp",
+         "endPhoto": "images/VGTkZKyjEN0-end.webp"
         },
         {
          "code": "2",
          "name": "Rolldowns",
          "video": "v_QG_wOqu2w",
          "note": "",
-         "photo": "images/v_QG_wOqu2w-pdf.webp"
+         "photo": "images/v_QG_wOqu2w-pdf.webp",
+         "startPhoto": "images/v_QG_wOqu2w-start.webp",
+         "endPhoto": "images/v_QG_wOqu2w-end.webp"
         },
         {
          "code": "3",
          "name": "Around the Worlds",
          "video": "9_-X5k0Dtoo",
          "note": "",
-         "photo": "images/9_-X5k0Dtoo-pdf.webp"
+         "photo": "images/9_-X5k0Dtoo-pdf.webp",
+         "startPhoto": "images/9_-X5k0Dtoo-start.webp",
+         "endPhoto": "images/9_-X5k0Dtoo-end.webp"
         }
        ]
       }
@@ -157,21 +175,27 @@
          "name": "Side Plank with Hip Lifts",
          "video": "DXQ9IO5dDwc",
          "note": "",
-         "photo": "images/DXQ9IO5dDwc-pdf.webp"
+         "photo": "images/DXQ9IO5dDwc-pdf.webp",
+         "startPhoto": "images/DXQ9IO5dDwc-start.webp",
+         "endPhoto": "images/DXQ9IO5dDwc-end.webp"
         },
         {
          "code": "2",
          "name": "Stability Ball Handovers",
          "video": "7qEMvT7IYU8",
          "note": "",
-         "photo": "images/7qEMvT7IYU8-pdf.webp"
+         "photo": "images/7qEMvT7IYU8-pdf.webp",
+         "startPhoto": "images/7qEMvT7IYU8-start.webp",
+         "endPhoto": "images/7qEMvT7IYU8-end.webp"
         },
         {
          "code": "3",
          "name": "Bird Dog",
          "video": "0xppM_lNNso",
          "note": "",
-         "photo": "images/0xppM_lNNso-pdf.webp"
+         "photo": "images/0xppM_lNNso-pdf.webp",
+         "startPhoto": "images/0xppM_lNNso-start.webp",
+         "endPhoto": "images/0xppM_lNNso-end.webp"
         }
        ]
       }
@@ -199,21 +223,27 @@
          "name": "Slide Outs",
          "video": "nVAE91jNm5A",
          "note": "",
-         "photo": "images/nVAE91jNm5A-pdf.webp"
+         "photo": "images/nVAE91jNm5A-pdf.webp",
+         "startPhoto": "images/nVAE91jNm5A-start.webp",
+         "endPhoto": "images/nVAE91jNm5A-end.webp"
         },
         {
          "code": "2",
          "name": "Stability Ball Drops",
          "video": "a9aFOBr8AvM",
          "note": "",
-         "photo": "images/a9aFOBr8AvM-pdf.webp"
+         "photo": "images/a9aFOBr8AvM-pdf.webp",
+         "startPhoto": "images/a9aFOBr8AvM-start.webp",
+         "endPhoto": "images/a9aFOBr8AvM-end.webp"
         },
         {
          "code": "3",
          "name": "Plank with Hip Dips",
          "video": "zzmNO_Nt5i0",
          "note": "",
-         "photo": "images/zzmNO_Nt5i0-pdf.webp"
+         "photo": "images/zzmNO_Nt5i0-pdf.webp",
+         "startPhoto": "images/zzmNO_Nt5i0-start.webp",
+         "endPhoto": "images/zzmNO_Nt5i0-end.webp"
         }
        ]
       }
@@ -241,21 +271,27 @@
          "name": "Spidermans",
          "video": "ZKvGPcHpWa8",
          "note": "",
-         "photo": "images/ZKvGPcHpWa8-pdf.webp"
+         "photo": "images/ZKvGPcHpWa8-pdf.webp",
+         "startPhoto": "images/ZKvGPcHpWa8-start.webp",
+         "endPhoto": "images/ZKvGPcHpWa8-end.webp"
         },
         {
          "code": "2",
          "name": "Leg Raises",
          "video": "zidYipkg-Ac",
          "note": "",
-         "photo": "images/zidYipkg-Ac-pdf.webp"
+         "photo": "images/zidYipkg-Ac-pdf.webp",
+         "startPhoto": "images/zidYipkg-Ac-start.webp",
+         "endPhoto": "images/zidYipkg-Ac-end.webp"
         },
         {
          "code": "3",
          "name": "Standing Woodchops",
          "video": "K-89Jh9yrqk",
          "note": "",
-         "photo": "images/K-89Jh9yrqk-pdf.webp"
+         "photo": "images/K-89Jh9yrqk-pdf.webp",
+         "startPhoto": "images/K-89Jh9yrqk-start.webp",
+         "endPhoto": "images/K-89Jh9yrqk-end.webp"
         }
        ]
       }
