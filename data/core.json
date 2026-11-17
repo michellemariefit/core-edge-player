@@ -1,0 +1,267 @@
+{
+ "program": "CORE",
+ "name": "The Core Edge",
+ "groups": [
+  {
+   "id": "core",
+   "name": "The Core Edge",
+   "intro": "Six core circuits. Go in order, 1 to 6, then start again.",
+   "when": "Off-season: 2 or 3 times a week. In season: 1 or 2. Add it to a strength or balance workout, do it on an off day before mobility or stretching, or after a running day. Never right before a practice or a game.",
+   "video": "",
+   "workouts": [
+    {
+     "id": "core-1",
+     "name": "Core Workout 1",
+     "group": "core",
+     "how": "3 exercises per workout · 15-20 reps of each (each side when it's one side at a time) · Plank: hold 30-60 seconds.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 rounds",
+     "reps": "15-20",
+     "restSeconds": 30,
+     "restLabel": "30s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "Circuit",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Russian Twists",
+         "video": "RgBLeOhfUQQ",
+         "note": "",
+         "photo": "images/RgBLeOhfUQQ-pdf.webp"
+        },
+        {
+         "code": "2",
+         "name": "Plank",
+         "video": "GlOaJ7sRTQ8",
+         "note": "Hold 30-60 seconds",
+         "photo": "images/GlOaJ7sRTQ8-pdf.webp"
+        },
+        {
+         "code": "3",
+         "name": "Leg Raises",
+         "video": "zidYipkg-Ac",
+         "note": "",
+         "photo": "images/zidYipkg-Ac-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "core-2",
+     "name": "Core Workout 2",
+     "group": "core",
+     "how": "3 exercises per workout · 15-20 reps of each (each side when it's one side at a time) · Plank: hold 30-60 seconds.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 rounds",
+     "reps": "15-20",
+     "restSeconds": 30,
+     "restLabel": "30s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "Circuit",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Stability Ball Drops",
+         "video": "a9aFOBr8AvM",
+         "note": "",
+         "photo": "images/a9aFOBr8AvM-pdf.webp"
+        },
+        {
+         "code": "2",
+         "name": "Stability Ball Rollouts",
+         "video": "gZ4P8n_KeNc",
+         "note": "",
+         "photo": "images/gZ4P8n_KeNc-pdf.webp"
+        },
+        {
+         "code": "3",
+         "name": "Lying Woodchops",
+         "video": "mXvaNbnp9MI",
+         "note": "",
+         "photo": "images/mXvaNbnp9MI-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "core-3",
+     "name": "Core Workout 3",
+     "group": "core",
+     "how": "3 exercises per workout · 15-20 reps of each (each side when it's one side at a time) · Plank: hold 30-60 seconds.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 rounds",
+     "reps": "15-20",
+     "restSeconds": 30,
+     "restLabel": "30s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "Circuit",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Oblique Stability Ball Rollouts",
+         "video": "VGTkZKyjEN0",
+         "note": "",
+         "photo": "images/VGTkZKyjEN0-pdf.webp"
+        },
+        {
+         "code": "2",
+         "name": "Rolldowns",
+         "video": "v_QG_wOqu2w",
+         "note": "",
+         "photo": "images/v_QG_wOqu2w-pdf.webp"
+        },
+        {
+         "code": "3",
+         "name": "Around the Worlds",
+         "video": "9_-X5k0Dtoo",
+         "note": "",
+         "photo": "images/9_-X5k0Dtoo-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "core-4",
+     "name": "Core Workout 4",
+     "group": "core",
+     "how": "3 exercises per workout · 15-20 reps of each (each side when it's one side at a time) · Plank: hold 30-60 seconds.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 rounds",
+     "reps": "15-20",
+     "restSeconds": 30,
+     "restLabel": "30s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "Circuit",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Side Plank with Hip Lifts",
+         "video": "DXQ9IO5dDwc",
+         "note": "",
+         "photo": "images/DXQ9IO5dDwc-pdf.webp"
+        },
+        {
+         "code": "2",
+         "name": "Stability Ball Handovers",
+         "video": "7qEMvT7IYU8",
+         "note": "",
+         "photo": "images/7qEMvT7IYU8-pdf.webp"
+        },
+        {
+         "code": "3",
+         "name": "Bird Dog",
+         "video": "0xppM_lNNso",
+         "note": "",
+         "photo": "images/0xppM_lNNso-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "core-5",
+     "name": "Core Workout 5",
+     "group": "core",
+     "how": "3 exercises per workout · 15-20 reps of each (each side when it's one side at a time) · Plank: hold 30-60 seconds.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 rounds",
+     "reps": "15-20",
+     "restSeconds": 30,
+     "restLabel": "30s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "Circuit",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Slide Outs",
+         "video": "nVAE91jNm5A",
+         "note": "",
+         "photo": "images/nVAE91jNm5A-pdf.webp"
+        },
+        {
+         "code": "2",
+         "name": "Stability Ball Drops",
+         "video": "a9aFOBr8AvM",
+         "note": "",
+         "photo": "images/a9aFOBr8AvM-pdf.webp"
+        },
+        {
+         "code": "3",
+         "name": "Plank with Hip Dips",
+         "video": "zzmNO_Nt5i0",
+         "note": "",
+         "photo": "images/zzmNO_Nt5i0-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "core-6",
+     "name": "Core Workout 6",
+     "group": "core",
+     "how": "3 exercises per workout · 15-20 reps of each (each side when it's one side at a time) · Plank: hold 30-60 seconds.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 rounds",
+     "reps": "15-20",
+     "restSeconds": 30,
+     "restLabel": "30s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "Circuit",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Spidermans",
+         "video": "ZKvGPcHpWa8",
+         "note": "",
+         "photo": "images/ZKvGPcHpWa8-pdf.webp"
+        },
+        {
+         "code": "2",
+         "name": "Leg Raises",
+         "video": "zidYipkg-Ac",
+         "note": "",
+         "photo": "images/zidYipkg-Ac-pdf.webp"
+        },
+        {
+         "code": "3",
+         "name": "Standing Woodchops",
+         "video": "K-89Jh9yrqk",
+         "note": "",
+         "photo": "images/K-89Jh9yrqk-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

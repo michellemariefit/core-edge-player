@@ -1,0 +1,92 @@
+<!doctype html>
+<meta charset="utf-8">
+<base target="_top">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Core Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0e9a8f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Home page. Three big buttons for what people do on a given day, then the rest. */
+:root{--bg:#f3f7f9;--card:#fff;--ink:#1b2e4c;--muted:#5a6b7c;--line:#d6e1e8;--brand:#0e9a8f;--brand-soft:#dcf3f0;--accent:#b0295e;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Inter","Helvetica Neue",Arial,sans-serif;--mono:"Inter","Helvetica Neue",Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.45 var(--body);padding:0 16px 60px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:700 12px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(30px,9vw,44px)/1.02 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+.big{display:flex;flex-direction:column;gap:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.go.brand{background:var(--brand);font-size:17px;padding:16px 10px}
+h2.also{margin:6px 0 -6px;font:800 13px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.go{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;border-radius:16px;padding:18px;font:800 21px/1 var(--display)}
+.ways{display:flex;flex-direction:column;gap:8px}
+.way{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;text-decoration:none;color:inherit}
+.way .ic{width:44px;height:44px;border-radius:12px;background:#0e9a8f;color:#fff;display:grid;place-items:center;font:800 20px/1 var(--display)}
+.way b{display:block;font:800 17px/1.2 var(--display)}
+.way small{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.card h2{margin:0;font:800 18px/1.2 var(--display)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.install{background:var(--brand-soft);border:1px solid var(--brand)}
+.install ol{margin:0;padding-left:20px;font-size:15px}
+</style>
+<div class="wrap">
+  <header><img src="icons/logo.png" alt="The Core Edge" style="width:min(260px,70%);height:auto;margin-bottom:6px"><h1>The Core Edge</h1>
+    <p class="lead">Six core circuits. Stronger on defense, harder to knock off the ball.</p></header>
+
+  <div id="next"></div>
+
+  <div class="card" style="background:var(--brand-soft);border-color:var(--brand)">
+    <h2>When to do these</h2>
+    <p>Off-season: 2 or 3 times a week. In season: 1 or 2. Add one to a strength or balance workout, do it on an off day before mobility or stretching, or after a running day.</p>
+    <p><b>Never right before a practice or a game.</b></p>
+  </div>
+
+  <h2 class="also">The workouts</h2>
+  <section class="ways" id="list"></section>
+
+  <h2 class="also">Also here</h2>
+  <section class="ways">
+    <a class="way" href="index.html#all"><span class="ic">A</span><span><b>All workouts</b><small>Everything in one place. Each has Play and List.</small></span></a>
+    <a class="way" href="print.html"><span class="ic">P</span><span><b>Print it</b><small>One page per workout, start and end photos, no ink wasted.</small></span></a>
+  </section>
+
+  <section class="card">
+    <h2>Play or List?</h2>
+    <p>Every workout has both. <b>Play</b> walks you through one exercise at a time and runs the plank timer and the rest timer for you. <b>List</b> shows the whole workout on one page. Switch any time.</p>
+  </section>
+
+  <section class="card install">
+    <h2>Put it on your home screen</h2>
+    <p>Then it opens like an app, full screen, and the photos work with bad signal.</p>
+    <ol>
+      <li><b>iPhone or iPad:</b> open this page in Safari or Chrome. Tap the Share button (the square with the arrow), then "Add to Home Screen", then Add.</li>
+      <li><b>Android:</b> open this page in Chrome. Tap the three dots at the top right, then "Add to Home screen" or "Install app".</li>
+    </ol>
+    <a href="install.html" style="font-weight:700;color:var(--brand)">Show me step by step with pictures →</a>
+  </section>
+</div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}};
+fetch('data/core.json').then(r=>r.json()).then(d=>{
+  const ws=d.groups[0].workouts, log=store.get('core:log',[]);
+  const last=[...log].reverse().find(x=>/^core-/.test(x.id||''));
+  const next=last?ws[(ws.findIndex(w=>w.id===last.id)+1)%ws.length]:ws[0];
+  const month=new Date();month.setDate(1);month.setHours(0,0,0,0);
+  const n=log.filter(x=>x.t>=month.getTime()).length;
+  document.getElementById('next').innerHTML=`<a class="go" href="play.html#${next.id}">▶ Next up: ${esc(next.name)}</a>
+    <p class="lead" style="font-size:15px">${last?`Last time: ${esc(last.name)}. `:'Start with Workout 1 and go in order. '}${n?`${n} core workout${n===1?'':'s'} this month.`:''}</p>`;
+  const done=ws.map(w=>store.get('core:'+w.id,{}).finished);
+  document.getElementById('list').innerHTML=ws.map((w,i)=>`<a class="way" href="index.html#${w.id}"><span class="ic">${i+1}</span><span><b>${esc(w.name)}</b><small>${w.blocks[0].exercises.map(e=>esc(e.name)).join(' · ')}</small></span></a>`).join('');
+});
+</script>
+<script>if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
